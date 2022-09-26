@@ -72,7 +72,7 @@ class BackgroundModel with ChangeNotifier {
   /// ```
   void image(
       {String? url,
-      String? path,Provider
+      String? path,
       ImageProvider<dynamic>? imageProvider,
       ColorFilter? colorFilter,
       BoxFit? fit,
