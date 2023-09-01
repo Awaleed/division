@@ -18,8 +18,7 @@ class CoreBuild extends StatelessWidget {
   final BoxConstraints? constraints;
 
   EdgeInsetsGeometry? get _paddingIncludingDecoration {
-    if (decoration == null || decoration!.padding == null)
-      return styleModel?.padding;
+    if (decoration == null) return styleModel?.padding;
     final EdgeInsetsGeometry? decorationPadding = decoration!.padding;
     if (styleModel?.padding == null) return decorationPadding;
     final EdgeInsetsGeometry padding = styleModel!.padding!;
@@ -97,7 +96,7 @@ class CoreBuild extends StatelessWidget {
 
     if (styleModel?.backgroundBlur != null) {
       widgetTree = ClipRRect(
-        borderRadius: decoration?.borderRadius as BorderRadius?,
+        borderRadius: decoration?.borderRadius ?? BorderRadius.zero,
         child: BackdropFilter(
           filter: ImageFilter.blur(
             sigmaX: styleModel!.backgroundBlur!,
