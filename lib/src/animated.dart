@@ -30,6 +30,7 @@ class _CoreAnimatedState extends AnimatedWidgetBaseState<CoreAnimated> {
   Matrix4Tween? _transform;
   Tween<double?>? _blur;
   Tween<double?>? _opacity;
+  Tween<double?>? _aspectRatio;
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
@@ -58,6 +59,8 @@ class _CoreAnimatedState extends AnimatedWidgetBaseState<CoreAnimated> {
         (dynamic value) => Tween<double>(begin: value)) as Tween<double?>?;
     _opacity = visitor(_opacity, widget.styleModel?.opacity,
         (dynamic value) => Tween<double>(begin: value)) as Tween<double?>?;
+    _aspectRatio = visitor(_aspectRatio, widget.styleModel?.aspectRatio,
+        (dynamic value) => Tween<double>(begin: value)) as Tween<double?>?;
   }
 
   @override
@@ -74,7 +77,8 @@ class _CoreAnimatedState extends AnimatedWidgetBaseState<CoreAnimated> {
         ..margin = _margin?.evaluate(animation)
         ..setTransform = _transform?.evaluate(animation)
         ..backgroundBlur = _blur?.evaluate(animation)
-        ..opacity = _opacity?.evaluate(animation);
+        ..opacity = _opacity?.evaluate(animation)
+        ..aspectRatio = _aspectRatio?.evaluate(animation);
     }
 
     return CoreBuild(

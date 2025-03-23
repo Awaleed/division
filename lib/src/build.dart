@@ -88,6 +88,10 @@ class CoreBuild extends StatelessWidget {
 
     if (gestureModel != null) widgetTree = gestures(widgetTree!, gestureModel!);
 
+    if (styleModel?.aspectRatio != null)
+      widgetTree =
+          AspectRatio(aspectRatio: styleModel!.aspectRatio!, child: widgetTree);
+
     if (constraints != null)
       widgetTree = ConstrainedBox(constraints: constraints!, child: widgetTree);
 

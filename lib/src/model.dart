@@ -184,6 +184,7 @@ class StyleModel {
   double? height;
   double? minHeight;
   double? maxHeight;
+  double? aspectRatio;
   Color? backgroundColor;
   double? backgroundBlur;
   DecorationImage? backgroundImage;
@@ -219,6 +220,7 @@ class StyleModel {
     height = _replace(height, intruder?.height, override);
     minHeight = _replace(minHeight, intruder?.minHeight, override);
     maxHeight = _replace(maxHeight, intruder?.maxHeight, override);
+    aspectRatio = _replace(aspectRatio, intruder?.aspectRatio, override);
     backgroundColor =
         _replace(backgroundColor, intruder?.backgroundColor, override);
     backgroundBlur =
@@ -248,10 +250,9 @@ class StyleModel {
   }
 
   dynamic _replace(dynamic current, dynamic intruder, bool override) {
-    if (override == true)
-      return intruder ?? current;
-    else
-      return current ?? intruder;
+    if (override == false && intruder == null) return current;
+    if (override == true || current == null) return intruder;
+    return current;
   }
 
   BoxConstraints? get constraints {

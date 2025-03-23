@@ -257,6 +257,10 @@ abstract class CoreStyle {
 
   void maxHeight(double maxHeight) => _styleModel.maxHeight = maxHeight;
 
+  /// Sets the aspect ratio of the widget. For example, 16/9 would constrain
+  /// the widget to a 16:9 aspect ratio.
+  void aspectRatio(double ratio) => _styleModel.aspectRatio = ratio;
+
   void scale(double ratio) => _styleModel.scale = ratio;
 
   void offset(double dx, double dy) => _styleModel.offset = Offset(dx, dy);
